@@ -1,5 +1,6 @@
 class CampaignsController < ApplicationController
   before_action :set_campaign, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /campaigns
   # GET /campaigns.json

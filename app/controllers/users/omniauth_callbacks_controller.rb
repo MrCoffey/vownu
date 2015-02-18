@@ -25,6 +25,15 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         end
     end
 
+    def after_sign_in_path_for(resource)
+      stored_location_for(resource) ||
+        if resource.is_a?(User) && resource.email.nil?
+          complete_profile_path
+        else
+          super
+        end
+    end
+
 
 
 
